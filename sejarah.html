@@ -1,0 +1,372 @@
+<html>
+ <head>
+  <title>
+    SAKA DIRGANTARA LANUD ATS
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            background-color: #ff0000;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .navbar {
+            background-color: #b30000;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        .navbar a {
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            background-color: #ffcc00;
+            color: black;
+        }
+        .main-content {
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+        .slides {
+            display: none;
+        }
+        .slides img {
+            width: 100%;
+            height: 500px; /* Adjusted height for rectangular shape */
+            object-fit: cover;
+        }
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .dot-container {
+            text-align: center;
+            padding: 20px;
+            background: #ddd;
+        }
+        .dot {
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active {
+            background-color: #717171;
+        }
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @-webkit-keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        .domain-check {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .domain-check input {
+            padding: 10px;
+            width: 60%;
+            margin: 10px 0;
+        }
+        .domain-check button {
+            padding: 10px 20px;
+            background-color: #00bfff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .domain-check button:hover {
+            background-color: #ffcc00;
+            color: black;
+        }
+        .info-section {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .info-box {
+            background-color: #4caf50;
+            color: white;
+            padding: 20px;
+            width: 30%;
+            text-align: center;
+        }
+        .info-box img {
+            width: 50px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .info-box p {
+            margin: 10px 0;
+        }
+        .plans-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .plans {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .plan-box {
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px; /* Adjusted width for square shape */
+            height: 300px; /* Adjusted height for square shape */
+            text-align: center;
+            flex: 0 0 33.33%; /* Ensure three boxes per slide */
+        }
+        .plan-box h3 {
+            background-color: #00bfff;
+            color: white;
+            padding: 10px;
+        }
+        .plan-box ul {
+            list-style: none;
+            padding: 0;
+        }
+        .plan-box ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .plan-box ul li:last-child {
+            border-bottom: none;
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .footer {
+            background-color: #b30000;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            cursor: pointer;
+            font-size: 16px;    
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            text-decoration: none;
+            text-align: left;
+            padding: 12px 16px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+  </style>
+ </head>
+ <link rel="icon" type="image/x-icon" href="FV/Lambang-Saka-Dirgantara-2-removebg-preview (1).png">
+ <body>
+    <title>Pusinfolahta TNI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+            const dateString = now.toLocaleDateString('en-US', options);
+            const timeString = now.toLocaleTimeString('en-US', { hour12: false });
+            document.getElementById('date').innerText = dateString;
+            document.getElementById('time').innerText = timeString;
+        }
+        setInterval(updateTime, 1000);
+        window.onload = updateTime;
+    </script>
+</head>
+<body class="bg-red-700">
+    <div class="bg-red-800 text-white text-sm py-1 px-4 flex justify-between items-center">
+        <div id="date"></div>
+        <div id="time" class="bg-red-600 px-2 py-1 rounded"></div>
+    </div>
+    <div class="relative">
+        <video class="w-full h-48 object-cover opacity-50" autoplay muted loop>
+            <source src="FV/VDO.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <img alt="Logo" class="absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2" height="100" src="FV/Lambang-Saka-Dirgantara-2-removebg-preview (1).png" width="100"/>
+        <div class="absolute inset-0 flex justify-center items-center">
+            <h1 class="text-white text-6xl font-bold">SAKA DIRGANTARA ATANG SENDJAJA</h1>
+        </div>
+    </div>
+    <div class="navbar">
+        <a href="beranda.html">
+         BERANDA
+        </a>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">DIRGANTARA</a>
+            <div class="dropdown-content">
+                <a href="sejarah.html">SEJARAH</a>
+                <a href="struktur.html">STRUKTUR</a>
+            </div>
+        </div>
+        <a href="galeri.html">
+         GALERI
+        </a>
+        <a href="kontak.html">
+         KONTAK
+        </a>
+       </div>
+       <div class="w-3/5 pr-4">
+       </div>
+       <header class="bg-white text-black py-4 flex flex-col items-center">
+        <div class="w-2/5 pl-4 text-left"> <!-- Mengubah text-center menjadi text-left -->
+            <p class="font-bold text-2xl text-center">
+                SEJARAH SAKA DIRGANTARA
+            </p>
+            <p class="text-lg">
+                Saka Dirgantara adalah wadah kegiatan untuk meningkatkan pengetahuan dan keterampilan praktis di bidang kedirgantaraan guna menumbuhkan kesadaran untuk membaktikan dirinya dalam pembangunan nasional. Satuan Karya ini membidangi bidang kedirgantaraan, umumnya saka ini hanya berada di wilayah yang memiliki potensi kedirgantaraan, dengan kata lain memiliki landasan udara.
+    
+                Pelatihan Saka Dirgantara umumnya memperbantukan para profesional di bidang kedirgantaraan, TNI AU, pihak perusahaan penerbangan dan klub aeromodelling. Pelatihan biasanya diadakan di sebuah Pangkalan Udara tertentu. <br></br>
+    
+                Secara pengertian dirgantara memiliki arti sebagai ruang alam semesta khususnya udara yang terbentang pada permukaan bumi ini. Sedangkan kedirgantaraan adalah segala sesuatu yang berkaitan dengan dirgantara serta usaha manusia dalam mendayagunakannya. <br></br>
+                Maka pengertian dari Saka Dirgantara adalah wadah pembinaan Pramuka Penegak dan Pandega untuk meningkatkan pengetahuan dan keterampilan praktis pada bidangnya. Keterampilan dan pengetahuan ini setidaknya dapat berguna dan berkembang menjadi sebuah lapangan pekerjaan bagi anggotanya.<br></br>
+                
+            <p class="font-bold text-2xl ">
+                Dua dasar terbentuknya Saka Dirgantara:
+            </p>
+    
+                Dasar pertama terbentuknya Saka Dirgantara adalah peran penting Angkatan Udara Republik Indonesia (AURI) (sekarang TNI AU) dan klub Aeromodelling Indonesia. Pada tahun 1948, AURI merintis terbentuknya Aero Club dan Pandu Udara dalam naungan TNI AU.
+    
+                Selanjutnya pada bulan Juni tahun 1964 untuk pertama kalinya terselenggarakan perkemahan Pandu Udara di Pangkalan Halim Perdanakusuma. Perkemahan itu terdiri dari 80 orang Pandu Udara yang berasal dari seluruh Indonesia.
+    
+                Dalam kegiatan perkemahan Pandu Udara juga terlaksanakan berbagai perlombaan kedirgantaraan. Hingga pada tahun 1995 telah tercatat sebanyak 35.000 anggota Pandu Udara dari seluruh Indonesia.<br></br>
+    
+                Dasar kedua terbentuknya Saka Dirgantara adalah kerjasama antara TNI AU dan Gerakan Pramuka. Pada tahun 1966 dua lembaga tersebut bersepakat untuk membentuk Kompi Pramuka Dirgantara.
+    
+                Kesepakatan itu kemudian terlegalkan dalam Instruksi Bersama Menteri/Panglima Angkatan Udara dan Ketua Kwarnas Gerakan Pramuka. Dalam surat nomor 13 tahun 1966 dan nomor 6 tahun 1966 tentang Pembentukan Kompi-kompi Pramuka Dirgantara.
+    
+                Kompi Pramuka Dirgantara inilah yang kemudian berubah nama menjadi Saka Pramuka Dirgantara.
+            </p>
+        </div>
+    </header>
+  <div class="footer">
+   <p>
+    COPYRIGHT ©2024 SAKA DIRGANTARA ATS. ALL RIGHTS RESERVED.
+   </p>
+  </div>
+  <script>
+   let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+
+        let planIndex = 0;
+        showPlans(planIndex);
+
+        function plusSlides(n) {
+            showPlans(planIndex += n);
+        }
+
+        function showPlans(n) {
+            let plans = document.getElementsByClassName("plans")[0];
+            let planBoxes = document.getElementsByClassName("plan-box");
+            if (n >= planBoxes.length / 3) {planIndex = 0}
+            if (n < 0) {planIndex = planBoxes.length / 3 - 1}
+            plans.style.transform = "translateX(" + (-planIndex * 100) + "%)";
+        }
+  </script>
+ </body>
+</html>
